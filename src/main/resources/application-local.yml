@@ -1,0 +1,18 @@
+# ===============================
+# = Database
+# ===============================
+spring:
+  datasource:
+# ===============================
+# Embedded mode
+# ===============================
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+    driver-class: org.h2.Driver
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+    sql-script-encoding: UTF-8
+    initialization-mode: embedded
+    schema: classpath*:/schema/schema.sql
+  h2:
+    console:
+      enabled: true

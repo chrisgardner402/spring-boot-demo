@@ -1,0 +1,21 @@
+# ===============================
+# Spring Profiles Active
+# ===============================
+spring:
+  profiles:
+    active: local
+# ===============================
+# = Database
+# ===============================
+  datasource:
+    hikari:
+      connection-timeout: 5000
+      validation-timeout: 1000
+      maximum-pool-size: 50
+      minimum-idle: 2
+      connection-test-query: SELECT 1
+      data-source-properties:
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        cachePrepStmts: true
+        useServerPrepStmts: true
