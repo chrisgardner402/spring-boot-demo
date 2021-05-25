@@ -1,5 +1,5 @@
 # ===============================
-# = Database
+# Database
 # ===============================
 spring:
   datasource:
@@ -16,3 +16,9 @@ spring:
   h2:
     console:
       enabled: true
+# ===============================
+# Quartz
+# ===============================
+  quartz:
+    jdbc:
+      initialize-schema: always

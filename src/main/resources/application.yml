@@ -4,9 +4,9 @@
 spring:
   profiles:
     active: local
-# ===============================
-# = Database
-# ===============================
+  # ===============================
+  # Database
+  # ===============================
   datasource:
     hikari:
       connection-timeout: 5000
@@ -19,3 +19,20 @@ spring:
         prepStmtCacheSqlLimit: 2048
         cachePrepStmts: true
         useServerPrepStmts: true
+  # ===============================
+  # Quartz
+  # ===============================
+  quartz:
+    job-store-type: jdbc
+    overwrite-existing-jobs: true
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: TestScheduler
+            instanceId: AUTO
+          jobStore:
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            useProperties: true
+            misfireThreshold: 60000
+            isClustered: true
