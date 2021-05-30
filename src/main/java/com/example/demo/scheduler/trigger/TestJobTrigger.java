@@ -1,9 +1,7 @@
 package com.example.demo.scheduler.trigger;
 
 import org.quartz.*;
-import org.springframework.stereotype.Component;
 
-@Component
 public class TestJobTrigger {
 
     private static final String triggerKey = "Test_Job_Trigger";

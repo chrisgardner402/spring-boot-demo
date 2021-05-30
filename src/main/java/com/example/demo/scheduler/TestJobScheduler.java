@@ -11,6 +11,7 @@ import org.quartz.SchedulerException;
 import org.quartz.Trigger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 import javax.annotation.PostConstruct;
 import java.util.Collections;
@@ -20,19 +21,21 @@ import java.util.Collections;
 public class TestJobScheduler {
 
     @Autowired
-    private Scheduler scheduler;
+    private SchedulerFactoryBean schedulerFactoryBean;
 
     @PostConstruct
     public void scheduleTestJob() throws SchedulerException {
+        Scheduler scheduler = this.schedulerFactoryBean.getScheduler();
         JobDetail testJobDetail = TestJobDetail.get();
         Trigger testTrigger = TestJobTrigger.get(testJobDetail);
-        this.scheduler.scheduleJob(testJobDetail, Collections.singleton(testTrigger), true);
+        scheduler.scheduleJob(testJobDetail, Collections.singleton(testTrigger), true);
     }
 
     @PostConstruct
     public void scheduleStartTestJob() throws SchedulerException {
+        Scheduler scheduler = this.schedulerFactoryBean.getScheduler();
         JobDetail startTestJobDetail = StartTestJobDetail.get();
         Trigger startTestTrigger = StartTestJobTrigger.get(startTestJobDetail);
-        this.scheduler.scheduleJob(startTestJobDetail, Collections.singleton(startTestTrigger), true);
+        scheduler.scheduleJob(startTestJobDetail, Collections.singleton(startTestTrigger), true);
     }
 }

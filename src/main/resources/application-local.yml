@@ -3,9 +3,9 @@
 # ===============================
 spring:
   datasource:
-# ===============================
-# Embedded mode
-# ===============================
+    # ===============================
+    # Embedded mode
+    # ===============================
     url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
     driver-class: org.h2.Driver
     username: ${SPRING_DATASOURCE_USERNAME:sa}
@@ -16,9 +16,9 @@ spring:
   h2:
     console:
       enabled: true
-# ===============================
-# Quartz
-# ===============================
+  # ===============================
+  # Quartz
+  # ===============================
   quartz:
     jdbc:
       initialize-schema: always
