@@ -1,6 +1,9 @@
 package com.example.demo.util;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.SecureRandom;
+import org.apache.commons.codec.binary.Base64;
 import org.junit.Assert;
 import org.junit.Test;
 import com.google.zxing.WriterException;
@@ -34,5 +37,22 @@ public class GoogleAuthTest {
         }
 
         Assert.assertEquals(code, GoogleAuthUtils.getTOTPCode(secretKey));
+    }
+
+    @Test
+    public void randomKey() {
+
+        SecureRandom random = new SecureRandom();
+        byte[] bytes = new byte[10];
+        random.nextBytes(bytes);
+        log.info("bytes : {}", bytes.toString());
+        try {
+            String key = new String(Base64.encodeBase64(bytes, false), "UTF-8").replace("==", "");
+            log.info("key : {}", key);
+        } catch (UnsupportedEncodingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
 }
